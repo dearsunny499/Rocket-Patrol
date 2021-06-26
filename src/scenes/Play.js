@@ -9,6 +9,9 @@ class Play extends Phaser.Scene {
 		this.load.image('starfield', './assets/starfield.png');
 	}
 	create() {
+		// place tile sprite
+		this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0);
+		
 		// set UI sizes
 		let borderUISize = game.config.height / 15;
 		let borderPadding = borderUISize / 3;
@@ -20,5 +23,8 @@ class Play extends Phaser.Scene {
 		this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
 		this.add.rectangle(0, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
 		this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
+	}
+	update() {
+		this.starfield.tilePositionX -= 4;
 	}
 }
